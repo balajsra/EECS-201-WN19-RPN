@@ -67,3 +67,27 @@ class TestKeys(unittest.TestCase):
     def test_fact_2(self):
         result = rpn.calculate('10 !')
         self.assertEqual(3628800, result)
+    
+    def test_bit_and_1(self):
+        result = rpn.calculate('13 7 &')
+        self.assertEqual(5, result)
+
+    def test_bit_and_2(self):
+        result = rpn.calculate('10 9 &')
+        self.assertEqual(8, result)
+    
+    def test_bit_or_1(self):
+        result = rpn.calculate('13 7 |')
+        self.assertEqual(15, result)
+    
+    def test_bit_or_2(self):
+        result = rpn.calculate('10 9 |')
+        self.assertEqual(11, result)
+    
+    def test_bit_not_1(self):
+        result = rpn.calculate('10 ~')
+        self.assertEqual(-11, result)
+    
+    def test_bit_not_2(self):
+        result = rpn.calculate('13 ~')
+        self.assertEqual(-14, result)
