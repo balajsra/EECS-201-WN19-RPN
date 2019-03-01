@@ -143,7 +143,7 @@ class TestDegreesRadians(unittest.TestCase):
     
     def test_sin_deg(self):
         result = rpn.calculate('45 deg sin')
-        self.assertEqual((2 ** 0.5) / 2), result)
+        self.assertEqual((2 ** 0.5) / 2, result)
     
     def test_tan_deg(self):
         result = rpn.calculate('45 deg tan')
@@ -158,5 +158,5 @@ class TestDegreesRadians(unittest.TestCase):
         self.assertEqual(90, result)
     
     def test_atan_deg(self):
-        result = rpn.calculate('1 rad atan')
+        result = rpn.calculate('1 deg atan')
         self.assertEqual(45, result)
