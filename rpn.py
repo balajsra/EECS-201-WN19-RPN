@@ -23,57 +23,73 @@ def calculate(expression):
             a = int(a)
             
             result = ~a
-        elif operation == "cos":
-            return math.cos(a)
-        elif operation == "sin":
-            return math.sin(a)
-        elif operation == "tan":
-            return math.tan(a)
-        elif operation == "acos":
-            return math.acos(a)
-        elif operation == "asin":
-            return math.asin(a)
-        elif operation == "atan":
-            return math.atan(a)
 
     elif len(stack) == 2:
-        b = float(conv_const(stack.pop()))
-        a = float(conv_const(stack.pop()))
+        if operation in ["+", "-", "*", "/", "%",
+        "^", "//", "&", "|", "<<", ">>"]:
+            b = float(conv_const(stack.pop()))
+            a = float(conv_const(stack.pop()))
 
-        if operation == "+":
-            result = a + b
-        elif operation == "-":
-            result = a - b
-        elif operation == "*":
-            result = a * b
-        elif operation == "/":
-            result = a / b
-        elif operation == "%":
-            result = a * (b / 100)
-        elif operation == "^":
-            result = a ** b
-        elif operation == "//":
-            result = a // b
-        elif operation == "&":
-            a = int(a)
-            b = int(b)
+            if operation == "+":
+                result = a + b
+            elif operation == "-":
+                result = a - b
+            elif operation == "*":
+                result = a * b
+            elif operation == "/":
+                result = a / b
+            elif operation == "%":
+                result = a * (b / 100)
+            elif operation == "^":
+                result = a ** b
+            elif operation == "//":
+                result = a // b
+            elif operation == "&":
+                a = int(a)
+                b = int(b)
 
-            result = a & b
-        elif operation == "|":
-            a = int(a)
-            b = int(b)
+                result = a & b
+            elif operation == "|":
+                a = int(a)
+                b = int(b)
 
-            result = a | b
-        elif operation == "<<":
-            a = int(a)
-            b = int(b)
+                result = a | b
+            elif operation == "<<":
+                a = int(a)
+                b = int(b)
 
-            result = a << b
-        elif operation == ">>":
-            a = int(a)
-            b = int(b)
+                result = a << b
+            elif operation == ">>":
+                a = int(a)
+                b = int(b)
 
-            result = a >> b
+                result = a >> b
+        elif operation in ["cos", "sin", "tan"]:
+            angle = stack.pop()
+            a = float(conv_const(stack.pop()))
+
+            if angle == "deg":
+                a = math.radians(a)
+            
+            if operation == "cos":
+                result = math.cos(a)
+            elif operation == "sin":
+                result = math.sin(a)
+            elif operation == "tan":
+                result = math.tan(a)
+        elif operation in ["acos", "asin", "atan"]:
+            angle = stack.pop()
+            a = float(conv_const(stack.pop()))
+
+            if operation == "acos":
+                result = math.acos(a)
+            elif operation == "asin":
+                result = math.asin(a)
+            elif operation == "atan":
+                result = math.atan(a)
+            
+            if angle == "deg":
+                result = math.degrees(result)
 
     return result
 
@@ -100,7 +116,7 @@ def conv_const(string):
     elif string == "e":
         return math.e
     else:
-        return float(string)
+        return string
 
 
 if __name__ == '__main__':

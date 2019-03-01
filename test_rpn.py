@@ -137,26 +137,29 @@ class TestDegreesRadians(unittest.TestCase):
         result = rpn.calculate('1 rad atan')
         self.assertEqual(math.pi / 4, result)
 
+
+
+
     def test_cos_deg(self):
         result = rpn.calculate('30 deg cos')
-        self.assertEqual((3 ** 0.5) / 2, result)
+        self.assertTrue(abs(((3 ** 0.5) / 2) - result) < 0.0001)
     
     def test_sin_deg(self):
         result = rpn.calculate('45 deg sin')
-        self.assertEqual((2 ** 0.5) / 2, result)
+        self.assertTrue(abs(((2 ** 0.5) / 2) - result) < 0.0001)
     
     def test_tan_deg(self):
         result = rpn.calculate('45 deg tan')
-        self.assertEqual(1, result)
+        self.assertTrue(abs(1 - result) < 0.0001)
 
     def test_acos_deg(self):
         result = rpn.calculate('0.5 deg acos')
-        self.assertEqual(60, result)
+        self.assertTrue(abs(60 - result) < 0.0001)
     
     def test_asin_deg(self):
         result = rpn.calculate('1 deg asin')
-        self.assertEqual(90, result)
+        self.assertTrue(abs(90 - result) < 0.0001)
     
     def test_atan_deg(self):
         result = rpn.calculate('1 deg atan')
-        self.assertEqual(45, result)
+        self.assertTrue(abs(45 - result) < 0.0001)
