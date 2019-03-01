@@ -33,3 +33,37 @@ class TestBasics(unittest.TestCase):
     def test_div_2(self):
         result = rpn.calculate('50 5 /')
         self.assertEqual(10, result)
+
+
+class TestKeys(unittest.TestCase):
+    def test_percentage_1(self):
+        result = rpn.calculate('72 5 %')
+        self.assertEqual(3.6, result)
+    
+    def test_percentage_2(self):
+        result = rpn.calculate('45 10.2 %')
+        self.assertEqual(4.59, result)
+
+    def test_exponent_1(self):
+        result = rpn.calculate('2 4 ^')
+        self.assertEqual(16, result)
+
+    def test_exponent_2(self):
+        result = rpn.calculate('5 3 ^')
+        self.assertEqual(125, result)
+
+    def test_int_div_1(self):
+        result = rpn.calculate('11 4 //')
+        self.assertEqual(2, result)
+
+    def test_int_div_2(self):
+        result = rpn.calculate('53 8 //')
+        self.assertEqual(6, result)
+
+    def test_fact_1(self):
+        result = rpn.calculate('5 !')
+        self.assertEqual(120, result)
+
+    def test_fact_2(self):
+        result = rpn.calculate('10 !')
+        self.assertEqual(3628800, result)
