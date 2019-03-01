@@ -18,6 +18,10 @@ def calculate(expression):
 
         if operation == "!":
             result = factorial(a)
+        elif operation == "~":
+            a = int(a)
+            
+            result = ~a
 
     elif len(stack) == 2:
         b = float(stack.pop())
@@ -37,6 +41,16 @@ def calculate(expression):
             result = a ** b
         elif operation == "//":
             result = a // b
+        elif operation == "&":
+            a = int(a)
+            b = int(b)
+
+            result = a & b
+        elif operation == "|":
+            a = int(a)
+            b = int(b)
+
+            result = a | b
 
     return result
 
