@@ -110,27 +110,53 @@ class TestMathLab(unittest.TestCase):
     def test_bin_right_shift(self):
         result = rpn.calculate('32 2 >>')
         self.assertEqual(8, result)
-    
-    def test_cos_rads(self):
-        result = rpn.calculate('pi cos')
+
+
+class TestDegreesRadians(unittest.TestCase):    
+    def test_cos_rad(self):
+        result = rpn.calculate('pi rad cos')
         self.assertEqual(-1, result)
     
-    def test_sin_rads(self):
-        result = rpn.calculate('pi sin')
+    def test_sin_rad(self):
+        result = rpn.calculate('pi rad sin')
         self.assertTrue(result < 0.0001)
     
-    def test_tan_rads(self):
-        result = rpn.calculate('pi tan')
+    def test_tan_rad(self):
+        result = rpn.calculate('pi rad tan')
         self.assertTrue(result < 0.0001)
 
-    def test_acos_rads(self):
-        result = rpn.calculate('1 acos')
+    def test_acos_rad(self):
+        result = rpn.calculate('1 rad acos')
         self.assertTrue(result < 0.0001)
     
-    def test_asin_rads(self):
-        result = rpn.calculate('1 asin')
+    def test_asin_rad(self):
+        result = rpn.calculate('1 rad asin')
         self.assertEqual(math.pi / 2, result)
     
-    def test_atan_rads(self):
-        result = rpn.calculate('1 atan')
+    def test_atan_rad(self):
+        result = rpn.calculate('1 rad atan')
         self.assertEqual(math.pi / 4, result)
+
+    def test_cos_deg(self):
+        result = rpn.calculate('30 deg cos')
+        self.assertEqual((3 ** 0.5) / 2, result)
+    
+    def test_sin_deg(self):
+        result = rpn.calculate('45 deg sin')
+        self.assertEqual((2 ** 0.5) / 2), result)
+    
+    def test_tan_deg(self):
+        result = rpn.calculate('45 deg tan')
+        self.assertEqual(1, result)
+
+    def test_acos_deg(self):
+        result = rpn.calculate('0.5 deg acos')
+        self.assertEqual(60, result)
+    
+    def test_asin_deg(self):
+        result = rpn.calculate('1 deg asin')
+        self.assertEqual(90, result)
+    
+    def test_atan_deg(self):
+        result = rpn.calculate('1 rad atan')
+        self.assertEqual(45, result)
