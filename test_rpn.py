@@ -27,7 +27,7 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(6, result)
 
     def test_div_1(self):
-        result = rpn.caclulate('28 7 /')
+        result = rpn.calculate('28 7 /')
         self.assertEqual(4, result)
 
     def test_div_2(self):
