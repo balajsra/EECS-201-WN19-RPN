@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 
+
 def calculate(expression):
+    if expression in ["quit", "q", "exit"]:
+        exit()
+
     stack = expression.split()
 
-    a = stack.pop()
-    b = stack.pop()
     operation = stack.pop()
+    b = float(stack.pop())
+    a = float(stack.pop())
 
     result = 0
 
