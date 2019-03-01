@@ -117,8 +117,20 @@ class TestMathLab(unittest.TestCase):
     
     def test_sin_rads(self):
         result = rpn.calculate('pi sin')
-        self.assertEqual(0, result)
+        self.assertTrue(result < 0.0001)
     
     def test_tan_rads(self):
         result = rpn.calculate('pi tan')
-        self.assertEqual(0, result)
+        self.assertTrue(result < 0.0001)
+
+    def test_acos_rads(self):
+        result = rpn.calculate('1 acos')
+        self.assertTrue(result < 0.0001)
+    
+    def test_asin_rads(self):
+        result = rpn.calculate('1 asin')
+        self.assertEqual(math.pi / 2, result)
+    
+    def test_atan_rads(self):
+        result = rpn.calculate('1 atan')
+        self.assertEqual(math.pi / 4, result)

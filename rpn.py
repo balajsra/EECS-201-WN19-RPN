@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import math
 
 def calculate(expression):
     if expression in ["quit", "q", "exit"]:
@@ -14,7 +15,7 @@ def calculate(expression):
     b = 0
 
     if len(stack) == 1:
-        a = float(stack.pop())
+        a = float(conv_const(stack.pop()))
 
         if operation == "!":
             result = factorial(a)
@@ -22,10 +23,22 @@ def calculate(expression):
             a = int(a)
             
             result = ~a
+        elif operation == "cos":
+            return math.cos(a)
+        elif operation == "sin":
+            return math.sin(a)
+        elif operation == "tan":
+            return math.tan(a)
+        elif operation == "acos":
+            return math.acos(a)
+        elif operation == "asin":
+            return math.asin(a)
+        elif operation == "atan":
+            return math.atan(a)
 
     elif len(stack) == 2:
-        b = float(stack.pop())
-        a = float(stack.pop())
+        b = float(conv_const(stack.pop()))
+        a = float(conv_const(stack.pop()))
 
         if operation == "+":
             result = a + b
@@ -51,6 +64,16 @@ def calculate(expression):
             b = int(b)
 
             result = a | b
+        elif operation == "<<":
+            a = int(a)
+            b = int(b)
+
+            result = a << b
+        elif operation == ">>":
+            a = int(a)
+            b = int(b)
+
+            result = a >> b
 
     return result
 
@@ -69,7 +92,16 @@ def factorial(num):
         return 1
         
     return num * factorial(num - 1)
-        
+
+
+def conv_const(string):
+    if string == "pi":
+        return math.pi
+    elif string == "e":
+        return math.e
+    else:
+        return float(string)
+
 
 if __name__ == '__main__':
     main()
