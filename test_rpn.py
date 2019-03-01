@@ -1,5 +1,6 @@
 import unittest
 import rpn
+import math
 
 class TestBasics(unittest.TestCase):
     def test_add_1(self):
@@ -91,3 +92,33 @@ class TestKeys(unittest.TestCase):
     def test_bit_not_2(self):
         result = rpn.calculate('13 ~')
         self.assertEqual(-14, result)
+
+
+class TestMathLab(unittest.TestCase):
+    def test_pi(self):
+        result = rpn.calculate('3 pi *')
+        self.assertEqual(3 * math.pi, result)
+
+    def test_e(self):
+        result = rpn.calculate('4 e +')
+        self.assertEqual(4 + math.e, result)
+
+    def test_bin_left_shift(self):
+        result = rpn.calculate('5 3 <<')
+        self.assertEqual(40, result)
+    
+    def test_bin_right_shift(self):
+        result = rpn.calculate('32 2 >>')
+        self.assertEqual(8, result)
+    
+    def test_cos_rads(self):
+        result = rpn.calculate('pi cos')
+        self.assertEqual(-1, result)
+    
+    def test_sin_rads(self):
+        result = rpn.calculate('pi sin')
+        self.assertEqual(0, result)
+    
+    def test_tan_rads(self):
+        result = rpn.calculate('pi tan')
+        self.assertEqual(0, result)
